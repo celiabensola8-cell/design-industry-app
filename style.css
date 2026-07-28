@@ -1,85 +1,94 @@
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-    background:#070B17;
-    color:white;
-    overflow-x:hidden;
+background:#070B17;
+color:white;
+overflow:hidden;
 }
 
 .background{
-    position:fixed;
-    inset:0;
-    background:
-        radial-gradient(circle at top,#123c77 0%,#070B17 70%);
-    z-index:-1;
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top,#00CFFF33,transparent 45%),
+radial-gradient(circle at bottom,#0A1F44,transparent 55%),
+#070B17;
+animation:moveBg 8s ease-in-out infinite alternate;
+}
+
+@keyframes moveBg{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.08);
+}
 }
 
 .container{
-    width:90%;
-    max-width:420px;
-    margin:40px auto;
-    padding:25px;
-    text-align:center;
-
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.10);
-    border-radius:30px;
-    backdrop-filter:blur(20px);
+position:relative;
+z-index:2;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100vh;
+padding:25px;
+text-align:center;
 }
 
 .logo{
-    width:170px;
-    display:block;
-    margin:0 auto 20px;
-}
-
-.hero{
-    width:220px;
-    display:block;
-    margin:0 auto 20px;
+width:140px;
+margin-bottom:20px;
 }
 
 h1{
-    font-size:34px;
-    color:#00CFFF;
-    margin-bottom:15px;
+font-size:34px;
+color:#00CFFF;
+margin-bottom:12px;
+text-shadow:0 0 20px #00CFFF;
 }
 
 #welcome{
-    color:#d7d7d7;
-    line-height:1.6;
-    margin-bottom:30px;
+color:#ddd;
+font-size:17px;
+max-width:330px;
+margin-bottom:35px;
+line-height:1.5;
+}
+
+.buttons{
+width:100%;
+max-width:320px;
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
 .btn{
-    width:100%;
-    padding:18px;
-    margin:12px 0;
-
-    border:none;
-    border-radius:18px;
-
-    background:#00CFFF;
-    color:white;
-
-    font-size:18px;
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
+padding:16px;
+border:none;
+border-radius:18px;
+background:#00CFFF;
+color:#070B17;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:.25s;
 }
 
 .btn:hover{
-    transform:scale(1.03);
+transform:scale(1.04);
 }
 
 .secondary{
-    background:transparent;
-    border:2px solid #00CFFF;
+background:rgba(255,255,255,.08);
+color:white;
+border:1px solid rgba(255,255,255,.2);
+backdrop-filter:blur(18px);
 }
