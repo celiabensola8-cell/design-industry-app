@@ -3,15 +3,32 @@ const tg = window.Telegram.WebApp;
 tg.ready();
 tg.expand();
 
-const welcome = document.getElementById("welcome");
+const user = tg.initDataUnsafe?.user;
 
-if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-    const user = tg.initDataUnsafe.user;
-    welcome.innerHTML = `👋 Bonjour <b>${user.first_name}</b><br>Bienvenue dans votre studio de création graphique.`;
+if (user) {
+    document.getElementById("welcome").textContent =
+        `Bienvenue ${user.first_name} 👋`;
 }
 
-document.querySelectorAll(".btn").forEach(button => {
+const pages = {
+    "🏠": "Accueil",
+    "🛍️": "Boutique",
+    "📦": "Packs",
+    "🛒": "Panier",
+    "👤": "Profil"
+};
+
+const title = document.querySelector(".services h2");
+
+document.querySelectorAll(".bottom-nav button").forEach(button => {
     button.addEventListener("click", () => {
+
+        const icon = button.textContent.trim().split("\n")[0];
+
+        if (pages[icon]) {
+            title.textContent = pages[icon];
+        }
+
         tg.HapticFeedback.impactOccurred("light");
     });
 });
