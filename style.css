@@ -141,4 +141,65 @@ border:none;
 color:white;
 font-size:13px;
 cursor:pointer;
+}/* ===== Splash Screen ===== */
+
+#splash{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(180deg,#070B17,#000814);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    overflow:hidden;
+}
+
+.splash-content{
+    text-align:center;
+    z-index:2;
+}
+
+.splash-logo{
+    width:130px;
+    animation:floatLogo 3s ease-in-out infinite;
+    filter:drop-shadow(0 0 25px #00CFFF);
+}
+
+#splash h1{
+    color:#00CFFF;
+    font-size:32px;
+    margin-top:20px;
+    text-shadow:0 0 20px #00CFFF;
+}
+
+#splash p{
+    color:white;
+    opacity:.85;
+    margin:12px 0 30px;
+}
+
+.loading{
+    width:240px;
+    height:8px;
+    background:rgba(255,255,255,.15);
+    border-radius:20px;
+    overflow:hidden;
+    margin:auto;
+}
+
+.loading-bar{
+    height:100%;
+    width:0%;
+    background:#00CFFF;
+    animation:loading 2s linear forwards;
+}
+
+@keyframes loading{
+    from{width:0%;}
+    to{width:100%;}
+}
+
+@keyframes floatLogo{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
 }
