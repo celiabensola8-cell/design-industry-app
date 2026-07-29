@@ -1,135 +1,57 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Industry</title>
 
-<title>Design Industry</title>
+    <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet" href="style.css">
-
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 
 <body>
-<div id="splash">
 
-    <div class="stars"></div>
+    <!-- Splash Screen -->
+    <div id="splash">
+        <div class="stars"></div>
 
-    <div class="splash-content">
+        <div class="splash-content">
+            <img src="E20D773F-8121-495E-A64F-57EC5A29AB15.png" class="logo" alt="Logo Design Industry">
 
-        <img src="E20D773F-8121-495E-A64F-57EC5A29AB15.png"
-             class="splash-logo">
+            <h1>DESIGN INDUSTRY</h1>
 
-        <h1>DESIGN INDUSTRY</h1>
+            <p>Le design qui accélère votre business</p>
 
-        <p>Le design qui accélère votre business</p>
-
-        <div class="loading">
-
-            <div class="loading-bar"></div>
-
+            <div class="loading">
+                <div class="loading-bar"></div>
+            </div>
         </div>
-
     </div>
 
-</div>
-<div class="background"></div>
+    <!-- Application -->
+    <main id="app" class="hidden">
 
-<div class="container">
+        <header class="hero">
 
-<img src="E20D773F-8121-495E-A64F-57EC5A29AB15.png" class="logo" alt="Design Industry">
+            <img src="E20D773F-8121-495E-A64F-57EC5A29AB15.png" class="hero-logo" alt="Logo">
 
-<h1>DESIGN INDUSTRY</h1>
+            <h1>DESIGN INDUSTRY</h1>
 
-<p id="welcome">
-Bienvenue sur Design Industry 👋<br>
-Le studio graphique disponible directement sur Telegram.
-</p>
+            <p id="welcome">
+                Bienvenue !
+            </p>
 
-<div class="buttons">
-<button class="btn">🚀 Commander</button>
-<button class="btn secondary">🛍 Boutique</button>
-</div>
+            <div class="hero-buttons">
 
-<section class="services">
+                <button id="orderBtn" class="btn primary">
+                    🚀 Commander
+                </button>
 
-<h2>Nos services</h2>
+                <button id="shopBtn" class="btn secondary">
+                    🛍 Boutique
+                </button>
 
-<div class="card">
-<h3>🎨 Logo Premium</h3>
-<p>💰 15 €</p>
-<p>⏱ Livraison : 30 à 60 min</p>
-</div>
+            </div>
 
-<div class="card">
-<h3>📄 Flyer</h3>
-<p>💰 10 €</p>
-<p>⏱ Livraison : 30 min</p>
-</div>
-
-<div class="card">
-<h3>💳 Carte de visite</h3>
-<p>💰 12 €</p>
-<p>⏱ Livraison : 30 min</p>
-</div>
-
-<div class="card">
-<h3>📱 Story Instagram</h3>
-<p>💰 8 €</p>
-<p>⏱ Livraison : 20 min</p>
-</div>
-
-<div class="card">
-<h3>🖼 Bannière</h3>
-<p>💰 10 €</p>
-<p>⏱ Livraison : 30 min</p>
-</div>
-
-<div class="card">
-<h3>🎬 Logo animé</h3>
-<p>💰 25 €</p>
-<p>⏱ Livraison : 1 heure</p>
-</div>
-
-<div class="card">
-<h3>😀 Stickers Telegram</h3>
-<p>💰 20 €</p>
-<p>⏱ Livraison : 30 min</p>
-</div>
-
-<div class="card">
-<h3>🤖 Bot Telegram</h3>
-<p>💰 50 €</p>
-<p>⏱ Livraison : 24 h</p>
-</div>
-
-<div class="card">
-<h3>📲 Mini App Telegram</h3>
-<p>💰 80 €</p>
-<p>⏱ Livraison : 24 à 48 h</p>
-</div>
-
-<div class="card">
-<h3>🌐 Site Web</h3>
-<p>💰 150 €</p>
-<p>⏱ Livraison : 2 à 5 jours</p>
-</div>
-
-</section>
-
-</div>
-
-<nav class="bottom-nav">
-<button>🏠<br>Accueil</button>
-<button>🛍<br>Boutique</button>
-<button>📦<br>Packs</button>
-<button>🛒<br>Panier</button>
-<button>👤<br>Profil</button>
-</nav>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+        </header>
