@@ -73,3 +73,15 @@ if (closeModal && orderModal) {
         orderModal.classList.add("hidden");
     });
 }
+const pages = document.querySelectorAll(".page");
+
+function showPage(id) {
+    pages.forEach(page => page.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+document.querySelector(".bottom-nav button:nth-child(1)").onclick = () => showPage("homePage");
+document.querySelector(".bottom-nav button:nth-child(2)").onclick = () => showPage("shopPage");
+document.querySelector(".bottom-nav button:nth-child(3)").onclick = () => showPage("packsPage");
+document.querySelector(".bottom-nav button:nth-child(4)").onclick = () => showPage("cartPage");
+document.querySelector(".bottom-nav button:nth-child(5)").onclick = () => showPage("profilePage");
