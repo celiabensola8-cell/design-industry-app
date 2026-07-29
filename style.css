@@ -294,3 +294,10 @@ body::before{
     background:#00CFFF;
     color:#070B17;
 }
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
