@@ -1,206 +1,238 @@
+/* ===========================
+   DESIGN INDUSTRY V3
+   =========================== */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-background:#070B17;
-color:white;
-overflow-x:hidden;
-padding-bottom:90px;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#070B17;
+    color:#fff;
+    overflow-x:hidden;
 }
 
-.background{
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at top,#00CFFF33,transparent 45%),
-radial-gradient(circle at bottom,#091A3A,transparent 60%),
-#070B17;
-z-index:-1;
-animation:bgMove 8s ease-in-out infinite alternate;
+/* Fond galaxie */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0,207,255,.18), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(0,120,255,.15), transparent 35%),
+        radial-gradient(circle at 50% 80%, rgba(0,207,255,.10), transparent 40%),
+        linear-gradient(180deg,#070B17,#000814);
+    z-index:-2;
 }
 
-@keyframes bgMove{
-from{transform:scale(1);}
-to{transform:scale(1.08);}
+/* Étoiles */
+
+.stars{
+    position:fixed;
+    inset:0;
+    background-image:
+        radial-gradient(#ffffff 1px, transparent 1px);
+    background-size:40px 40px;
+    opacity:.35;
+    animation:starsMove 60s linear infinite;
+    z-index:-1;
 }
 
-.container{
-max-width:420px;
-margin:auto;
-padding:25px;
-text-align:center;
+@keyframes starsMove{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-200px);
+    }
 }
-
-.logo{
-width:220px;
-max-width:80%;
-display:block;
-margin:25px auto;
-animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
-}
-
-h1{
-font-size:40px;
-color:#00CFFF;
-text-shadow:0 0 20px #00CFFF;
-margin-bottom:10px;
-}
-
-#welcome{
-color:#ddd;
-font-size:17px;
-line-height:1.6;
-margin-bottom:30px;
-}
-
-.buttons{
-display:flex;
-flex-direction:column;
-gap:15px;
-margin-bottom:40px;
-}
-
-.btn{
-width:100%;
-padding:18px;
-border:none;
-border-radius:20px;
-background:#00CFFF;
-color:#07111f;
-font-size:19px;
-font-weight:bold;
-cursor:pointer;
-transition:.25s;
-}
-
-.btn:hover{
-transform:scale(1.03);
-}
-
-.secondary{
-background:rgba(255,255,255,.08);
-color:white;
-border:1px solid rgba(255,255,255,.15);
-backdrop-filter:blur(18px);
-}
-
-.services h2{
-font-size:30px;
-margin-bottom:20px;
-}
-
-.card{
-background:rgba(255,255,255,.08);
-border:1px solid rgba(255,255,255,.12);
-backdrop-filter:blur(20px);
-border-radius:22px;
-padding:22px;
-margin-bottom:18px;
-transition:.25s;
-}
-
-.card:hover{
-transform:translateY(-4px);
-}
-
-.card h3{
-font-size:24px;
-margin-bottom:10px;
-}
-
-.card p{
-margin:8px 0;
-color:#ddd;
-}
-
-.bottom-nav{
-position:fixed;
-left:0;
-right:0;
-bottom:0;
-display:flex;
-justify-content:space-around;
-padding:15px 5px;
-background:rgba(8,12,25,.92);
-backdrop-filter:blur(20px);
-border-top:1px solid rgba(255,255,255,.1);
-}
-
-.bottom-nav button{
-background:none;
-border:none;
-color:white;
-font-size:13px;
-cursor:pointer;
-}
-/* ===== Splash Screen ===== */
+/* ===========================
+   SPLASH SCREEN
+   =========================== */
 
 #splash{
     position:fixed;
     inset:0;
-    background:linear-gradient(180deg,#070B17,#000814);
     display:flex;
     justify-content:center;
     align-items:center;
+    background:rgba(7,11,23,.96);
+    backdrop-filter:blur(10px);
     z-index:9999;
-    overflow:hidden;
 }
 
 .splash-content{
     text-align:center;
-    z-index:2;
+    animation:fadeIn .8s ease;
 }
 
-.splash-logo{
-    width:130px;
-    animation:floatLogo 3s ease-in-out infinite;
+.logo,
+.hero-logo{
+    width:140px;
     filter:drop-shadow(0 0 25px #00CFFF);
+    animation:floatLogo 4s ease-in-out infinite;
 }
 
-#splash h1{
-    color:#00CFFF;
-    font-size:32px;
+#splash h1,
+.hero h1{
     margin-top:20px;
-    text-shadow:0 0 20px #00CFFF;
+    font-size:32px;
+    color:#00CFFF;
+    text-shadow:0 0 15px #00CFFF;
 }
 
 #splash p{
-    color:white;
-    opacity:.85;
-    margin:12px 0 30px;
+    margin:15px 0 25px;
+    color:#d7e9ff;
 }
 
 .loading{
     width:240px;
     height:8px;
-    background:rgba(255,255,255,.15);
-    border-radius:20px;
-    overflow:hidden;
     margin:auto;
+    border-radius:20px;
+    background:rgba(255,255,255,.15);
+    overflow:hidden;
 }
 
 .loading-bar{
-    height:100%;
     width:0%;
+    height:100%;
     background:#00CFFF;
     animation:loading 2s linear forwards;
 }
 
 @keyframes loading{
-    from{width:0%;}
+    from{width:0;}
     to{width:100%;}
 }
 
 @keyframes floatLogo{
     0%,100%{transform:translateY(0);}
     50%{transform:translateY(-12px);}
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+/* ===========================
+   APPLICATION
+   =========================== */
+
+.hidden{
+    display:none;
+}
+
+.hero{
+    text-align:center;
+    padding:40px 20px 20px;
+}
+
+#welcome{
+    margin:15px auto 25px;
+    color:#d7e9ff;
+    max-width:320px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.btn{
+    width:240px;
+    padding:15px;
+    border:none;
+    border-radius:16px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn.primary{
+    background:#00CFFF;
+    color:#070B17;
+    box-shadow:0 0 20px rgba(0,207,255,.5);
+}
+
+.btn.primary:active{
+    transform:scale(.97);
+}
+
+.btn.secondary{
+    background:rgba(255,255,255,.08);
+    color:white;
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(10px);
+}
+
+.services{
+    padding:20px;
+}
+
+.services h2{
+    color:#00CFFF;
+    margin-bottom:20px;
+}
+
+.card{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    transition:transform .25s ease;
+}
+
+.card:active{
+    transform:scale(.98);
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    margin-bottom:6px;
+}
+
+.card span{
+    color:#8fdfff;
+}
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+    padding:14px 10px;
+    background:rgba(7,11,23,.85);
+    backdrop-filter:blur(16px);
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.bottom-nav button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:13px;
 }
