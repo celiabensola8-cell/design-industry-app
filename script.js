@@ -32,3 +32,23 @@ document.querySelectorAll(".bottom-nav button").forEach(button => {
         tg.HapticFeedback.impactOccurred("light");
     });
 });
+// ===== Splash Screen =====
+
+window.addEventListener("load", () => {
+
+    const splash = document.getElementById("splash");
+
+    if (!splash) return;
+
+    setTimeout(() => {
+
+        splash.style.transition = "opacity .8s ease";
+        splash.style.opacity = "0";
+
+        setTimeout(() => {
+            splash.remove();
+        }, 800);
+
+    }, 2000);
+
+});
