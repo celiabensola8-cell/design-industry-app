@@ -236,3 +236,61 @@ body::before{
     color:white;
     font-size:13px;
 }
+/* ===========================
+   MODAL COMMANDE
+   =========================== */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:10000;
+}
+
+.modal.hidden{
+    display:none;
+}
+
+.modal-content{
+    width:90%;
+    max-width:360px;
+    background:rgba(15,20,35,.92);
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(20px);
+    border-radius:24px;
+    padding:24px;
+    text-align:center;
+    box-shadow:0 0 30px rgba(0,207,255,.25);
+}
+
+.modal-content h2{
+    color:#00CFFF;
+    margin-bottom:15px;
+}
+
+.modal-content p{
+    color:#d7e9ff;
+    margin-bottom:20px;
+}
+
+.service-btn{
+    width:100%;
+    padding:14px;
+    margin-bottom:10px;
+    border:none;
+    border-radius:14px;
+    background:rgba(255,255,255,.08);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.service-btn:active{
+    transform:scale(.98);
+    background:#00CFFF;
+    color:#070B17;
+}
