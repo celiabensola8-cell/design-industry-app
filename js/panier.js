@@ -1,53 +1,21 @@
-let panier = [];
+document.getElementById("checkoutBtn").onclick = () => {
 
-const cartItems = document.getElementById("cartItems");
-const cartTotal = document.getElementById("cartTotal");
-
-function afficherPanier() {
-
-    if (!cartItems) return;
-
-    cartItems.innerHTML = "";
-
-    let total = 0;
-
-    panier.forEach((article, index) => {
-
-        const prix = parseFloat(article.prix.replace(/[^\d.,]/g, "").replace(",", "."));
-
-        total += prix;
-
-        cartItems.innerHTML += `
-            <div class="card">
-                <h3>${article.titre}</h3>
-                <p>${article.prix}</p>
-                <button onclick="supprimerArticle(${index})">
-                    ❌ Supprimer
-                </button>
-            </div>
-        `;
-    });
-
-    cartTotal.textContent = `Total : ${total.toFixed(2)} €`;
+if (panier.length === 0) {
+    alert("Votre panier est vide.");
+    return;
 }
 
-function supprimerArticle(index) {
-    panier.splice(index, 1);
-    afficherPanier();
-}
+let message = "🛒 Nouvelle commande Design Industry\n\n";
 
-const addCartBtn = document.getElementById("addCartBtn");
+let total = 0;
 
-if (addCartBtn) {
-    addCartBtn.onclick = () => {
+panier.forEach(item => {
+    message += "• " + item.nom + " - " + item.prix + " €\n";
+    total += item.prix;
+});
 
-        panier.push({
-            titre: document.getElementById("productTitle").textContent,
-            prix: document.getElementById("productPrice").textContent
-        });
+message += "\n💰 Total : " + total + " €";
 
-        afficherPanier();
+Telegram.WebApp.sendData(message);
 
-        Telegram.WebApp.showAlert("🛒 Produit ajouté au panier !");
-    };
-}
+};
