@@ -1,0 +1,8 @@
+const openCartBtn = document.getElementById("openCartBtn");
+const cartPage = document.getElementById("cartPage");
+
+if (openCartBtn && cartPage) {
+  openCartBtn.addEventListener("click", () => {
+    cartPage.classList.toggle("hidden");
+  });
+}
