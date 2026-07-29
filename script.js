@@ -52,3 +52,24 @@ window.addEventListener("load", () => {
     });
 
 });
+// ===== Fenêtre de commande =====
+
+const orderBtn = document.getElementById("orderBtn");
+const orderModal = document.getElementById("orderModal");
+const closeModal = document.getElementById("closeModal");
+
+if (orderBtn && orderModal) {
+    orderBtn.addEventListener("click", () => {
+        orderModal.classList.remove("hidden");
+
+        if (tg?.HapticFeedback) {
+            tg.HapticFeedback.impactOccurred("medium");
+        }
+    });
+}
+
+if (closeModal && orderModal) {
+    closeModal.addEventListener("click", () => {
+        orderModal.classList.add("hidden");
+    });
+}
