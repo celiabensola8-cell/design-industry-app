@@ -1,54 +1,54 @@
-const tg = window.Telegram.WebApp;
+// ===========================
+// DESIGN INDUSTRY V3
+// ===========================
 
-tg.ready();
-tg.expand();
+const tg = window.Telegram?.WebApp;
 
-const user = tg.initDataUnsafe?.user;
-
-if (user) {
-    document.getElementById("welcome").textContent =
-        `Bienvenue ${user.first_name} 👋`;
+if (tg) {
+    tg.ready();
+    tg.expand();
 }
-
-const pages = {
-    "🏠": "Accueil",
-    "🛍️": "Boutique",
-    "📦": "Packs",
-    "🛒": "Panier",
-    "👤": "Profil"
-};
-
-const title = document.querySelector(".services h2");
-
-document.querySelectorAll(".bottom-nav button").forEach(button => {
-    button.addEventListener("click", () => {
-
-        const icon = button.textContent.trim().split("\n")[0];
-
-        if (pages[icon]) {
-            title.textContent = pages[icon];
-        }
-
-        tg.HapticFeedback.impactOccurred("light");
-    });
-});
-// ===== Splash Screen =====
 
 window.addEventListener("load", () => {
 
-    const splash = document.getElementById("splash");
+    // Message de bienvenue
+    const welcome = document.getElementById("welcome");
 
-    if (!splash) return;
+    if (tg && tg.initDataUnsafe?.user && welcome) {
+        welcome.textContent =
+            `Bienvenue ${tg.initDataUnsafe.user.first_name} 👋`;
+    }
+
+    // Splash Screen
+    const splash = document.getElementById("splash");
+    const app = document.getElementById("app");
 
     setTimeout(() => {
 
-        splash.style.transition = "opacity .8s ease";
-        splash.style.opacity = "0";
+        if (splash) {
+            splash.style.opacity = "0";
 
-        setTimeout(() => {
-            splash.remove();
-        }, 800);
+            setTimeout(() => {
+                splash.remove();
+                if (app) {
+                    app.classList.remove("hidden");
+                }
+            }, 700);
+        }
 
     }, 2000);
+
+    // Boutons
+    document.querySelectorAll(".btn").forEach(btn => {
+
+        btn.addEventListener("click", () => {
+
+            if (tg?.HapticFeedback) {
+                tg.HapticFeedback.impactOccurred("light");
+            }
+
+        });
+
+    });
 
 });
