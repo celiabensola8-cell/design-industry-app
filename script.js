@@ -115,21 +115,25 @@ window.addEventListener("resize", resizeCanvas);
 
 const stars = [];
 
-for(let i=0;i<300;i++){
+for(let i=0;i<900;i++){
 
     stars.push({
 
-        x:Math.random()*canvas.width,
+    x: Math.random() * canvas.width,
 
-        y:Math.random()*canvas.height,
+    y: Math.random() * canvas.height,
 
-        r:Math.random()*2,
+    r: Math.random() * 2.8 + 0.3,
 
-        a:Math.random(),
+    a: Math.random(),
 
-        s:(Math.random()*0.02)+0.005
+    s: (Math.random() * 0.03) + 0.004,
 
-    });
+    layer: Math.random(),
+
+    hue: 190 + Math.random() * 70
+
+});
 
 }
 
@@ -171,7 +175,7 @@ function animateSpace(){
 
         ctx.beginPath();
 
-        ctx.fillStyle=`rgba(255,255,255,${star.a})`;
+ctx.fillStyle = `hsla(${star.hue},100%,90%,${star.a})`;
 
         ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
 
