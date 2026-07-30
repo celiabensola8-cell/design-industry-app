@@ -1,44 +1,153 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Industry</title>
 
-<title>Design Industry</title>
+  <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet" href="style.css">
-
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 
 <body>
 
-<!-- GALAXIE -->
 <div class="galaxy"></div>
 <canvas id="space"></canvas>
 
-<!-- SPLASH -->
-
 <div id="splash">
 
-<img src="E20D773F-8121-495E-A64F-57EC5A29AB15.png" class="logo">
+    <img
+        src="E20D773F-8121-495E-A64F-57EC5A29AB15.png"
+        class="logo"
+        alt="Design Industry">
+
+    <h1>DESIGN INDUSTRY</h1>
+
+    <p>Le design qui accélère votre business</p>
+
+    <div class="loader">
+        <div class="loader-bar"></div>
+    </div>
+
+</div>
+
+<main id="app" class="hidden">
+
+<header class="hero">
+
+<img
+src="E20D773F-8121-495E-A64F-57EC5A29AB15.png"
+class="hero-logo"
+alt="Logo">
 
 <h1>DESIGN INDUSTRY</h1>
 
-<p>Le design qui accélère votre business</p>
+<p id="welcome">
+Bienvenue 👋
+</p>
 
-<div class="loader">
-<div class="loader-bar"></div>
+<button id="orderBtn" class="btn primary">
+🚀 Commander maintenant
+</button>
+
+<button id="shopBtn" class="btn secondary">
+🛍️ Voir la boutique
+</button>
+
+</header>
+
+<section id="home" class="page active">
+
+<h2>Nos services</h2>
+
+<div class="services">
+
+<div class="card">
+🎨 Logo Premium
+<span>30 à 60 min</span>
+</div>
+
+<div class="card">
+📄 Flyer
+<span>30 à 60 min</span>
+</div>
+
+<div class="card">
+🖼 Bannière
+<span>30 à 60 min</span>
+</div>
+
+<div class="card">
+🎬 Logo animé
+<span>1 à 2 h</span>
+</div>
+
+<div class="card">
+🤖 Bot Telegram
+<span>24 h</span>
+</div>
+
+<div class="card">
+📱 Mini App
+<span>24 à 48 h</span>
+</div>
+
+<div class="card">
+🌍 Site Web
+<span>2 à 5 jours</span>
 </div>
 
 </div>
 
-<!-- APPLICATION -->
+</section>
 
-<main id="app" class="hidden">
+<section id="shop" class="page">
+
+<h2>Boutique</h2>
+
+<div class="card">
+Les produits arriveront ici.
+</div>
+
+</section>
+
+<section id="packs" class="page">
+
+<h2>Packs</h2>
+
+<div class="card">🟢 Starter</div>
+
+<div class="card">🔵 Business</div>
+
+<div class="card">🟣 Premium</div>
+
+</section>
+
+<section id="cart" class="page">
+
+<h2>Panier</h2>
+
+<div class="card">
+Votre panier est vide.
+</div>
+
+</section>
+
+<section id="profile" class="page">
+
+<h2>Profil</h2>
+
+<div class="card">
+
+<p id="profileName">
+Utilisateur Telegram
+</p>
+
+</div>
+
+</section>
 
 <nav class="bottom-nav">
 
@@ -54,116 +163,27 @@
 
 </nav>
 
-<section id="home" class="page active">
-
-<img src="E20D773F-8121-495E-A64F-57EC5A29AB15.png" class="hero-logo">
-
-<h1>DESIGN INDUSTRY</h1>
-
-<p id="welcome">
-Bienvenue !
-</p>
-
-<button id="orderBtn" class="btn primary">
-🚀 Commander
-</button>
-
-<button id="shopBtn" class="btn secondary">
-🛍️ Boutique
-</button>
-
-<h2>Nos Services</h2>
-
-<div class="services">
-
-<div class="card">
-🎨 Logo Premium
-</div>
-
-<div class="card">
-📄 Flyer
-</div>
-
-<div class="card">
-🖼 Bannière
-</div>
-
-<div class="card">
-🎥 Logo animé
-</div>
-
-<div class="card">
-🤖 Bot Telegram
-</div>
-
-<div class="card">
-📱 Mini App
-</div>
-
-<div class="card">
-🌐 Site Web
-</div>
-
-</div>
-
-</section>
-
-<section id="shop" class="page">
-
-<h2>🛍️ Boutique</h2>
-
-<div class="card">
-Tous les services disponibles
-</div>
-
-</section>
-
-<section id="packs" class="page">
-
-<h2>📦 Packs</h2>
-
-<div class="card">
-🟢 Starter
-</div>
-
-<div class="card">
-🔵 Business
-</div>
-
-<div class="card">
-🟣 Premium
-</div>
-
-</section>
-
-<section id="cart" class="page">
-
-<h2>🛒 Mon panier</h2>
-
-<div class="card">
-Votre panier est vide.
-</div>
-
-</section>
-
-<section id="profile" class="page">
-
-<h2>👤 Mon profil</h2>
-
-<div class="card">
-
-<p id="profileName">
-Utilisateur Telegram
-</p>
-
-</div>
-
-</section>
-
 </main>
+
+<div id="orderModal" class="hidden">
+
+<div class="modal">
+
+<h2>Commander</h2>
+
+<p>
+La commande sera disponible dans la V5.
+</p>
+
+<button id="closeModal" class="btn primary">
+Fermer
+</button>
+
+</div>
+
+</div>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
