@@ -46,16 +46,6 @@ body{
     pointer-events:none;
 }
 
-    from{
-        transform:translateY(0);
-    }
-
-    to{
-        transform:translateY(-400px);
-    }
-
-}
-
 /* ==========================
    SPLASH
 ========================== */
