@@ -85,3 +85,32 @@ document.querySelector(".bottom-nav button:nth-child(2)").onclick = () => showPa
 document.querySelector(".bottom-nav button:nth-child(3)").onclick = () => showPage("packsPage");
 document.querySelector(".bottom-nav button:nth-child(4)").onclick = () => showPage("cartPage");
 document.querySelector(".bottom-nav button:nth-child(5)").onclick = () => showPage("profilePage");
+// Navigation
+
+const pages = document.querySelectorAll(".page");
+
+function showPage(id) {
+    pages.forEach(page => page.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+// Boutons de la page d'accueil
+document.getElementById("shopBtn")?.addEventListener("click", () => {
+    showPage("shopPage");
+});
+
+document.getElementById("packsBtn")?.addEventListener("click", () => {
+    showPage("packsPage");
+});
+
+document.getElementById("homeBtn")?.addEventListener("click", () => {
+    showPage("homePage");
+});
+
+document.getElementById("profileBtn")?.addEventListener("click", () => {
+    showPage("profilePage");
+});
+
+document.getElementById("cartBtn")?.addEventListener("click", () => {
+    showPage("cartPage");
+});
