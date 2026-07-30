@@ -98,3 +98,117 @@ closeModal?.addEventListener("click", () => {
     orderModal?.classList.add("hidden");
 
 });
+// ==========================
+// CIEL ÉTOILÉ ANIMÉ
+// ==========================
+
+const canvas = document.getElementById("space");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+const stars = [];
+
+for(let i=0;i<300;i++){
+
+    stars.push({
+
+        x:Math.random()*canvas.width,
+
+        y:Math.random()*canvas.height,
+
+        r:Math.random()*2,
+
+        a:Math.random(),
+
+        s:(Math.random()*0.02)+0.005
+
+    });
+
+}
+
+const shootingStars=[];
+
+function createShootingStar(){
+
+    shootingStars.push({
+
+        x:Math.random()*canvas.width,
+
+        y:Math.random()*250,
+
+        vx:12,
+
+        vy:6,
+
+        life:0
+
+    });
+
+}
+
+setInterval(createShootingStar,7000);
+
+function animateSpace(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    stars.forEach(star=>{
+
+        star.a+=star.s;
+
+        if(star.a>1||star.a<0){
+
+            star.s*=-1;
+
+        }
+
+        ctx.beginPath();
+
+        ctx.fillStyle=`rgba(255,255,255,${star.a})`;
+
+        ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+
+        ctx.fill();
+
+    });
+
+    shootingStars.forEach((s,index)=>{
+
+        ctx.beginPath();
+
+        ctx.strokeStyle="rgba(255,255,255,.9)";
+
+        ctx.lineWidth=2;
+
+        ctx.moveTo(s.x,s.y);
+
+        ctx.lineTo(s.x-90,s.y-45);
+
+        ctx.stroke();
+
+        s.x+=s.vx;
+
+        s.y+=s.vy;
+
+        s.life++;
+
+        if(s.life>35){
+
+            shootingStars.splice(index,1);
+
+        }
+
+    });
+
+    requestAnimationFrame(animateSpace);
+
+}
+
+animateSpace();
