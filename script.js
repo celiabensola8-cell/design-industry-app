@@ -103,6 +103,11 @@ closeModal?.addEventListener("click", () => {
 // ==========================
 
 const canvas = document.getElementById("space");
+
+if (!canvas) {
+    throw new Error("Canvas #space introuvable");
+}
+
 const ctx = canvas.getContext("2d");
 
 function resizeCanvas(){
