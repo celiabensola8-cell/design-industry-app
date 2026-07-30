@@ -1,268 +1,213 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Industry</title>
 
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<title>Design Industry</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
 </head>
 
 <body>
-    <div>
 
-<section id="homePage" class="page active">
+<!-- Galaxy -->
+<div class="galaxy"></div>
+<div class="stars"></div>
 
-    <!-- Splash Screen -->
-    <div id="splash">
-        <div class="stars"></div>
+<!-- Splash -->
 
-        <div class="splash-content">
-            <img src="E20D773F-8121-495E-A64F-57EC5A29AB15.png" class="logo" alt="Logo Design Industry">
+<div id="splash">
 
-            <h1>DESIGN INDUSTRY</h1>
+    <img src="E20D773F-8121-495E-A64F-57EC5A29AB15.png"
+         class="logo">
 
-            <p>Le design qui accélère votre business</p>
+    <h1>DESIGN INDUSTRY</h1>
 
-            <div class="loading">
-                <div class="loading-bar"></div>
-            </div>
-        </div>
+    <p>Le design qui accélère votre business</p>
+
+    <div class="loader">
+        <div class="loader-bar"></div>
     </div>
 
-    <!-- Application -->
-    <main id="app" class="hidden">
+</div>
 
-        <header class="hero">
+<!-- Application -->
 
-            <img src="E20D773F-8121-495E-A64F-57EC5A29AB15.png" class="hero-logo" alt="Logo">
-
-            <h1>DESIGN INDUSTRY</h1>
-
-            <p id="welcome">
-                Bienvenue !
-            </p>
-
-            <div class="hero-buttons">
-
-                <button id="orderBtn" class="btn primary">
-                    🚀 Commander
-                </button>
-
-                <button id="shopBtn" class="btn secondary">
-                    🛍 Boutique
-                </button>
-
-            </div>
-
-        </header>
-                <section id="services" class="services">
-
-            <h2>Nos Services</h2>
-
-            <div class="card">
-                <h3>🎨 Logo Premium</h3>
-                <p>À partir de 15 €</p>
-                <span>⏱ 30 à 60 min</span>
-            </div>
-
-            <div class="card">
-                <h3>📄 Flyer</h3>
-                <p>À partir de 10 €</p>
-                <span>⏱ 30 à 60 min</span>
-            </div>
-
-            <div class="card">
-                <h3>🤖 Bot Telegram</h3>
-                <p>À partir de 50 €</p>
-                <span>⏱ 24 h</span>
-            </div>
-
-            <div class="card">
-                <h3>📱 Mini App Telegram</h3>
-                <p>À partir de 80 €</p>
-                <span>⏱ 24 à 48 h</span>
-            </div>
-
-            <div class="card">
-                <h3>🌐 Site Web</h3>
-                <p>À partir de 150 €</p>
-                <span>⏱ 2 à 5 jours</span>
-            </div>
-
-        </section>
-
-    </main>
+<main id="app" class="hidden">
 
 <nav class="bottom-nav">
-    <button id="homeBtn">🏠 Accueil</button>
-    <button id="shopBtn">🛍️ Boutique</button>
-    <button id="packsBtn">📦 Packs</button>
-    <button id="cartBtn">🛒 Panier</button>
-    <button id="profileBtn">👤 Profil</button>
+
+<button data-page="home">🏠</button>
+
+<button data-page="shop">🛍️</button>
+
+<button data-page="packs">📦</button>
+
+<button data-page="cart">🛒</button>
+
+<button data-page="profile">👤</button>
+
 </nav>
 
-<section id="shopPage" class="page">
+<section id="home" class="page active">
 
-<h2>🛍️ Boutique</h2>
+<img src="E20D773F-8121-495E-A64F-57EC5A29AB15.png"
+class="hero-logo">
 
+<h1>DESIGN INDUSTRY</h1>
+
+<p id="welcome">
+Bienvenue !
+</p>
+
+<button id="orderBtn" class="btn primary">
+🚀 Commander
+</button>
+
+<button id="shopBtn" class="btn secondary">
+🛍 Boutique
+</button>
+
+<h2>Nos Services</h2>
 <div class="card">
-<h3>🎨 Logo Premium</h3>
-<p>À partir de 15 €</p>
+    <h3>🎨 Logo Premium</h3>
+    <p>À partir de 15 €</p>
+    <span>⏱ 30 à 60 min</span>
 </div>
 
 <div class="card">
-<h3>📄 Flyer</h3>
-<p>À partir de 10 €</p>
+    <h3>📄 Flyer</h3>
+    <p>À partir de 10 €</p>
+    <span>⏱ 30 à 60 min</span>
 </div>
 
 <div class="card">
-<h3>🖼️ Bannière</h3>
-<p>À partir de 8 €</p>
+    <h3>🖼️ Bannière</h3>
+    <p>À partir de 8 €</p>
+    <span>⏱ 30 à 60 min</span>
 </div>
 
 <div class="card">
-<h3>🤖 Bot Telegram</h3>
-<p>À partir de 50 €</p>
+    <h3>🤖 Bot Telegram</h3>
+    <p>À partir de 50 €</p>
+    <span>⏱ 24 h</span>
 </div>
 
 <div class="card">
-<h3>📱 Mini App Telegram</h3>
-<p>À partir de 80 €</p>
+    <h3>📱 Mini App Telegram</h3>
+    <p>À partir de 80 €</p>
+    <span>⏱ 24 à 48 h</span>
 </div>
 
 <div class="card">
-<h3>🌐 Site Web</h3>
-<p>À partir de 150 €</p>
+    <h3>🌐 Site Web</h3>
+    <p>À partir de 150 €</p>
+    <span>⏱ 2 à 5 jours</span>
 </div>
 
 </section>
 
-<section id="packsPage" class="page">
+<section id="shop" class="page">
 
-<h2>📦 Nos Packs</h2>
+<h2>🛍 Boutique</h2>
 
 <div class="card">
-<h3>🟢 Pack Starter</h3>
+<h3>Tous nos services</h3>
+<p>Choisissez votre prestation et commandez en quelques clics.</p>
+</div>
+
+</section>
+
+<section id="packs" class="page">
+
+<h2>📦 Packs</h2>
+
+<div class="card">
+<h3>🟢 Starter</h3>
+<p>Logo + Flyer</p>
 <p>25 €</p>
-<p>✔ Logo + Flyer</p>
 </div>
 
 <div class="card">
-<h3>🔵 Pack Business</h3>
+<h3>🔵 Business</h3>
+<p>Logo + Flyer + Bannière</p>
 <p>50 €</p>
-<p>✔ Logo + Flyer + Bannière</p>
-</div>
-
-<div class="card">
-<h3>🟣 Pack Premium</h3>
-<p>80 €</p>
-<p>✔ Identité visuelle complète</p>
-</div>
-
-<div class="card">
-<h3>💎 Pack Ultimate</h3>
-<p>150 €</p>
-<p>✔ Tous les services + accompagnement</p>
 </div>
 
 </section>
+<section id="cart" class="page">
 
-<section id="cartPage" class="page">
+<h2>🛒 Mon panier</h2>
 
-<h2>🛒 Mon Panier</h2>
-
-<div id="cartItems" class="card">
+<div class="card">
 <p>Votre panier est vide.</p>
 </div>
 
-<div class="card">
-<h3>Total</h3>
-<p id="cartTotal">0 €</p>
-
-<button id="checkoutBtn" class="btn">
-🚀 Commander
+<button id="checkoutBtn" class="btn primary">
+🚀 Commander sur Telegram
 </button>
+
+</section>
+
+<section id="profile" class="page">
+
+<h2>👤 Mon profil</h2>
+
+<div class="card">
+
+<p id="profileName">
+Utilisateur Telegram
+</p>
+
+<p>
+Bienvenue sur Design Industry 🚀
+</p>
+
 </div>
 
 </section>
 
-<section id="profilePage" class="page"></section>
-    <div id="orderModal" class="modal hidden">
+</main>
 
-  <div class="modal-content">
+<div id="orderModal" class="modal hidden">
 
-    <h2>🚀 Nouvelle commande</h2>
+<div class="modal-content">
 
-    <p>Choisissez un service :</p>
+<h2>🚀 Nouvelle commande</h2>
 
-    <button class="service-btn"
-onclick="afficherProduit('logo')">
+<p>Sélectionnez un service.</p>
+
+<button class="btn primary">
 🎨 Logo
 </button>
-    <button class="service-btn"
-onclick="afficherProduit('flyer')">
+
+<button class="btn primary">
 📄 Flyer
 </button>
-    <button class="service-btn"
-onclick="afficherProduit('banniere')">
-🖼️ Bannière
+
+<button class="btn primary">
+🤖 Bot Telegram
 </button>
-    <button class="service-btn">🤖 Bot Telegram</button>
-    <button class="service-btn">📱 Mini App Telegram</button>
-    <button class="service-btn">🌐 Site Web</button>
 
-    <button id="closeModal" class="btn secondary">
-      Fermer
-    </button>
+<button class="btn primary">
+📱 Mini App
+</button>
 
-  </div>
-
-</div>
-<div id="productModal" class="modal hidden">
-
-  <div class="modal-content">
-
-    <h2 id="productTitle"></h2>
-
-    <p id="productPrice"></p>
-
-    <p id="productDelay"></p>
-
-    <p id="productDescription"></p>
-
-    <button id="addCartBtn" class="btn primary">
-        🛒 Ajouter au panier
-    </button>
-
-    <button id="closeProduct" class="btn secondary">
-        Retour
-    </button>
-
-  </div>
+<button class="btn secondary" id="closeModal">
+Fermer
+</button>
 
 </div>
-<section id="cartPage" class="hidden">
 
-  <h2>🛒 Mon panier</h2>
-
-  <div id="cartItems"></div>
-
-  <h3 id="cartTotal">Total : 0 €</h3>
-
-  <button id="checkoutBtn" class="btn">
-    🚀 Commander sur Telegram
-  </button>
-
-</section>
-      <script src="js/produits.js"></script>
-<script src="js/modal.js"></script>
- <script src="js/panier.js"></script>
-<script src="js/boutique.js"></script>
-<script src="js/cart.js"></script>
+</div>
 <script src="script.js"></script>
 
 </body>
+
 </html>
