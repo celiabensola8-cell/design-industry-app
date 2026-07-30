@@ -85,14 +85,6 @@ document.querySelector(".bottom-nav button:nth-child(2)").onclick = () => showPa
 document.querySelector(".bottom-nav button:nth-child(3)").onclick = () => showPage("packsPage");
 document.querySelector(".bottom-nav button:nth-child(4)").onclick = () => showPage("cartPage");
 document.querySelector(".bottom-nav button:nth-child(5)").onclick = () => showPage("profilePage");
-// Navigation
-
-const pages = document.querySelectorAll(".page");
-
-function showPage(id) {
-    pages.forEach(page => page.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-}
 
 // Boutons de la page d'accueil
 document.getElementById("shopBtn")?.addEventListener("click", () => {
