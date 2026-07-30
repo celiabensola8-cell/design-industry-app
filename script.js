@@ -1,6 +1,6 @@
-// ===========================
-// DESIGN INDUSTRY V3
-// ===========================
+// ==========================
+// DESIGN INDUSTRY V4
+// ==========================
 
 const tg = window.Telegram?.WebApp;
 
@@ -11,98 +11,90 @@ if (tg) {
 
 window.addEventListener("load", () => {
 
-    // Message de bienvenue
-    const welcome = document.getElementById("welcome");
-
-    if (tg && tg.initDataUnsafe?.user && welcome) {
-        welcome.textContent =
-            `Bienvenue ${tg.initDataUnsafe.user.first_name} 👋`;
-    }
-
     // Splash Screen
     const splash = document.getElementById("splash");
     const app = document.getElementById("app");
 
     setTimeout(() => {
+        if (splash) splash.remove();
 
-        if (splash) {
-            splash.style.opacity = "0";
-
-            setTimeout(() => {
-                splash.remove();
-                if (app) {
-                    app.classList.remove("hidden");
-                }
-            }, 700);
+        if (app) {
+            app.classList.remove("hidden");
         }
-
     }, 2000);
 
-    // Boutons
-    document.querySelectorAll(".btn").forEach(btn => {
+    // Bienvenue Telegram
+    const welcome = document.getElementById("welcome");
+    const profileName = document.getElementById("profileName");
 
-        btn.addEventListener("click", () => {
+    if (tg?.initDataUnsafe?.user) {
+        const name = tg.initDataUnsafe.user.first_name;
 
-            if (tg?.HapticFeedback) {
-                tg.HapticFeedback.impactOccurred("light");
-            }
+        if (welcome) {
+            welcome.textContent = `Bienvenue ${name} 👋`;
+        }
 
-        });
+        if (profileName) {
+            profileName.textContent = name;
+        }
+    }
+});
+
+// ==========================
+// Navigation
+// ==========================
+
+const pages = document.querySelectorAll(".page");
+
+function showPage(id) {
+
+    pages.forEach(page => page.classList.remove("active"));
+
+    document.getElementById(id)?.classList.add("active");
+
+}
+
+document.querySelectorAll(".bottom-nav button").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document
+            .querySelectorAll(".bottom-nav button")
+            .forEach(b => b.classList.remove("active"));
+
+        button.classList.add("active");
+
+        showPage(button.dataset.page);
+
+        tg?.HapticFeedback?.impactOccurred("light");
 
     });
 
 });
-// ===== Fenêtre de commande =====
+
+// Bouton Boutique
+document
+.getElementById("shopBtn")
+?.addEventListener("click", () => showPage("shop"));
+
+// ==========================
+// Modal commande
+// ==========================
 
 const orderBtn = document.getElementById("orderBtn");
 const orderModal = document.getElementById("orderModal");
 const closeModal = document.getElementById("closeModal");
 
-if (orderBtn && orderModal) {
-    orderBtn.addEventListener("click", () => {
-        orderModal.classList.remove("hidden");
+orderBtn?.addEventListener("click", () => {
 
-        if (tg?.HapticFeedback) {
-            tg.HapticFeedback.impactOccurred("medium");
-        }
-    });
-}
+    orderModal?.classList.remove("hidden");
 
-if (closeModal && orderModal) {
-    closeModal.addEventListener("click", () => {
-        orderModal.classList.add("hidden");
-    });
-}
-const pages = document.querySelectorAll(".page");
+    tg?.HapticFeedback?.impactOccurred("medium");
 
-function showPage(id) {
-    pages.forEach(page => page.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-}
-
-document.querySelector(".bottom-nav button:nth-child(1)").onclick = () => showPage("homePage");
-document.querySelector(".bottom-nav button:nth-child(2)").onclick = () => showPage("shopPage");
-document.querySelector(".bottom-nav button:nth-child(3)").onclick = () => showPage("packsPage");
-document.querySelector(".bottom-nav button:nth-child(4)").onclick = () => showPage("cartPage");
-document.querySelector(".bottom-nav button:nth-child(5)").onclick = () => showPage("profilePage");
-
-// Boutons de la page d'accueil
-document.getElementById("shopBtn")?.addEventListener("click", () => {
-    showPage("shopPage");
 });
 
-document.getElementById("packsBtn")?.addEventListener("click", () => {
-    showPage("packsPage");
-});
+closeModal?.addEventListener("click", () => {
 
-document.getElementById("homeBtn")?.addEventListener("click", () => {
-    showPage("homePage");
-});
+    orderModal?.classList.add("hidden");
 
-document.getElementById("profileBtn")?.addEventListener("click", () => {
-    showPage("profilePage");
-});
-
-document.getElementById("cartBtn")?.addEventListener("click", () => {
-    showPage("cartPage");
 });
