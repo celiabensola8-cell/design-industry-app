@@ -1,6 +1,6 @@
-// ===========================
-// DESIGN INDUSTRY V3
-// ===========================
+// ==========================
+// DESIGN INDUSTRY V4
+// ==========================
 
 const tg = window.Telegram?.WebApp;
 
@@ -11,98 +11,204 @@ if (tg) {
 
 window.addEventListener("load", () => {
 
-    // Message de bienvenue
-    const welcome = document.getElementById("welcome");
-
-    if (tg && tg.initDataUnsafe?.user && welcome) {
-        welcome.textContent =
-            `Bienvenue ${tg.initDataUnsafe.user.first_name} 👋`;
-    }
-
     // Splash Screen
     const splash = document.getElementById("splash");
     const app = document.getElementById("app");
 
     setTimeout(() => {
+        if (splash) splash.remove();
 
-        if (splash) {
-            splash.style.opacity = "0";
-
-            setTimeout(() => {
-                splash.remove();
-                if (app) {
-                    app.classList.remove("hidden");
-                }
-            }, 700);
+        if (app) {
+            app.classList.remove("hidden");
         }
-
     }, 2000);
 
-    // Boutons
-    document.querySelectorAll(".btn").forEach(btn => {
+    // Bienvenue Telegram
+    const welcome = document.getElementById("welcome");
+    const profileName = document.getElementById("profileName");
 
-        btn.addEventListener("click", () => {
+    if (tg?.initDataUnsafe?.user) {
+        const name = tg.initDataUnsafe.user.first_name;
 
-            if (tg?.HapticFeedback) {
-                tg.HapticFeedback.impactOccurred("light");
-            }
+        if (welcome) {
+            welcome.textContent = `Bienvenue ${name} 👋`;
+        }
 
-        });
+        if (profileName) {
+            profileName.textContent = name;
+        }
+    }
+});
+
+// ==========================
+// Navigation
+// ==========================
+
+const pages = document.querySelectorAll(".page");
+
+function showPage(id) {
+
+    pages.forEach(page => page.classList.remove("active"));
+
+    document.getElementById(id)?.classList.add("active");
+
+}
+
+document.querySelectorAll(".bottom-nav button").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document
+            .querySelectorAll(".bottom-nav button")
+            .forEach(b => b.classList.remove("active"));
+
+        button.classList.add("active");
+
+        showPage(button.dataset.page);
+
+        tg?.HapticFeedback?.impactOccurred("light");
 
     });
 
 });
-// ===== Fenêtre de commande =====
+
+// Bouton Boutique
+document
+.getElementById("shopBtn")
+?.addEventListener("click", () => showPage("shop"));
+
+// ==========================
+// Modal commande
+// ==========================
 
 const orderBtn = document.getElementById("orderBtn");
 const orderModal = document.getElementById("orderModal");
 const closeModal = document.getElementById("closeModal");
 
-if (orderBtn && orderModal) {
-    orderBtn.addEventListener("click", () => {
-        orderModal.classList.remove("hidden");
+orderBtn?.addEventListener("click", () => {
 
-        if (tg?.HapticFeedback) {
-            tg.HapticFeedback.impactOccurred("medium");
+    orderModal?.classList.remove("hidden");
+
+    tg?.HapticFeedback?.impactOccurred("medium");
+
+});
+
+closeModal?.addEventListener("click", () => {
+
+    orderModal?.classList.add("hidden");
+
+});
+// ==========================
+// CIEL ÉTOILÉ ANIMÉ
+// ==========================
+
+const canvas = document.getElementById("space");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+const stars = [];
+
+for(let i=0;i<300;i++){
+
+    stars.push({
+
+        x:Math.random()*canvas.width,
+
+        y:Math.random()*canvas.height,
+
+        r:Math.random()*2,
+
+        a:Math.random(),
+
+        s:(Math.random()*0.02)+0.005
+
+    });
+
+}
+
+const shootingStars=[];
+
+function createShootingStar(){
+
+    shootingStars.push({
+
+        x:Math.random()*canvas.width,
+
+        y:Math.random()*250,
+
+        vx:12,
+
+        vy:6,
+
+        life:0
+
+    });
+
+}
+
+setInterval(createShootingStar,7000);
+
+function animateSpace(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    stars.forEach(star=>{
+
+        star.a+=star.s;
+
+        if(star.a>1||star.a<0){
+
+            star.s*=-1;
+
         }
+
+        ctx.beginPath();
+
+        ctx.fillStyle=`rgba(255,255,255,${star.a})`;
+
+        ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+
+        ctx.fill();
+
     });
-}
 
-if (closeModal && orderModal) {
-    closeModal.addEventListener("click", () => {
-        orderModal.classList.add("hidden");
+    shootingStars.forEach((s,index)=>{
+
+        ctx.beginPath();
+
+        ctx.strokeStyle="rgba(255,255,255,.9)";
+
+        ctx.lineWidth=2;
+
+        ctx.moveTo(s.x,s.y);
+
+        ctx.lineTo(s.x-90,s.y-45);
+
+        ctx.stroke();
+
+        s.x+=s.vx;
+
+        s.y+=s.vy;
+
+        s.life++;
+
+        if(s.life>35){
+
+            shootingStars.splice(index,1);
+
+        }
+
     });
-}
-const pages = document.querySelectorAll(".page");
 
-function showPage(id) {
-    pages.forEach(page => page.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
+    requestAnimationFrame(animateSpace);
+
 }
 
-document.querySelector(".bottom-nav button:nth-child(1)").onclick = () => showPage("homePage");
-document.querySelector(".bottom-nav button:nth-child(2)").onclick = () => showPage("shopPage");
-document.querySelector(".bottom-nav button:nth-child(3)").onclick = () => showPage("packsPage");
-document.querySelector(".bottom-nav button:nth-child(4)").onclick = () => showPage("cartPage");
-document.querySelector(".bottom-nav button:nth-child(5)").onclick = () => showPage("profilePage");
-
-// Boutons de la page d'accueil
-document.getElementById("shopBtn")?.addEventListener("click", () => {
-    showPage("shopPage");
-});
-
-document.getElementById("packsBtn")?.addEventListener("click", () => {
-    showPage("packsPage");
-});
-
-document.getElementById("homeBtn")?.addEventListener("click", () => {
-    showPage("homePage");
-});
-
-document.getElementById("profileBtn")?.addEventListener("click", () => {
-    showPage("profilePage");
-});
-
-document.getElementById("cartBtn")?.addEventListener("click", () => {
-    showPage("cartPage");
-});
+animateSpace();
