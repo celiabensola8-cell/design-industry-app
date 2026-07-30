@@ -175,7 +175,7 @@ function animateSpace(){
 
         ctx.beginPath();
 
-ctx.fillStyle = `hsla(${star.hue},100%,90%,${star.a})`;
+ctx.fillStyle = `rgba(255,255,255,${star.a})`;
 
         ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
 
